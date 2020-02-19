@@ -1,8 +1,7 @@
 import React from "react"
 
-import './directory.styles.scss'
+import "./directory.styles.scss"
 import MenuItem from "../menu-item/menu-item.component"
-
 
 class Directory extends React.Component {
   constructor() {
@@ -48,13 +47,16 @@ class Directory extends React.Component {
   render() {
     return (
       <div className="directory-menu">
-        {this.state.section.map(({ title, imageUrl, id , size}) => (
+        {/* {this.state.section.map(({ title, imageUrl, id , size}) => (
           <MenuItem key={id} title={title} imageUrl={imageUrl} size={size}/>
+        ))} */}
+        {/* same as above but using ES6 shortcuts since the keys are exactly same as the property names ex: title={title} */}
+        {this.state.section.map(({ id, ...otherSectionProps }) => (
+          <MenuItem key={id} {...otherSectionProps} />
         ))}
       </div>
     )
   }
 }
 
-
-export default Directory ;
+export default Directory
